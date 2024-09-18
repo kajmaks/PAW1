@@ -1,4 +1,5 @@
 const http = require('http');
+const https = require('https');
 const fs = require('fs');
 
 const server = http.createServer((req, res) => {
@@ -33,5 +34,12 @@ const server = http.createServer((req, res) => {
                 res.end(data);
             }
         });
+    } else if (req.url === '/get_params') {
+        /*
+            Dla ścieżki /get_params wyświetl w konsoli Node.js parametry przekazane metodą GET.
+            Parametry GET skonwertuj do tablicy i zapisz w pliku params_{timestamp}.json, gdzie timestamp to timestamp przyjęcia danych. Format danych to JSON.
+            Zwróć ze ścieżki dane JSON o treści {'ok': 'ok'}
+        */
     }
 }).listen(3000);
+
