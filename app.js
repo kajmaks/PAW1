@@ -21,6 +21,10 @@ app.use('/html', htmlRoute);
 app.use('/htmlfile', htmlfileRoute);
 app.use('/get_params', getParamsRoute);
 
+const port = process.env.PORT || 3000;
+
+console.log(`http://127.0.0.1:${port}`);
+
 app.use((req, res) => {
   const type = mime.getType(req.url);
   const filePath = path.join(__dirname, 'assets', req.url);
