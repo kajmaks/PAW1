@@ -1,42 +1,23 @@
-import express from 'express';
-import fs from 'fs';
-import path from 'path';
-import mime from 'mime';
-import indexRoute from './routes/index.js';
-import jsonRoute from './routes/json.js';
-import htmlRoute from './routes/html.js';
-import { fileURLToPath } from 'url';
-import htmlfileRoute from './routes/htmlfile.js';
-import getParamsRoute from './routes/get_params.js';
-
+const express = require('express');
+const path = require('path');
 const app = express();
+const PORT = 3005;
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url))
+app.use(express.urlencoded({ extended: true }));
+app.use('/static', express.static(path.join(__dirname, 'static')));
 
-app.use(express.static(path.join(__dirname, 'assets')));
+const index = require('./routes/index');
+const oNas = require('./routes/o-nas');
+const oferta = require('./routes/oferta');
+const kontakt = require('./routes/kontakt');
 
-app.use('/', indexRoute);
-app.use('/json', jsonRoute);
-app.use('/html', htmlRoute);
-app.use('/htmlfile', htmlfileRoute);
-app.use('/get_params', getParamsRoute);
+app.use('/', index);
+app.use('/o-nas', oNas);
+app.use('/oferta', oferta);
+app.use('/kontakt', kontakt);
 
-const port = process.env.PORT || 3000;
-
-console.log(`http://127.0.0.1:${port}`);
-
-app.use((req, res) => {
-  const type = mime.getType(req.url);
-  const filePath = path.join(__dirname, 'assets', req.url);
-
-  fs.readFile(filePath, (err, data) => {
-    if (err) {
-      res.status(404).json({ error: 404 });
-    } else {
-      res.setHeader('Content-Type', type);
-      res.end(data);
-    }
-  });
+app.listen(PORT, () => {
+    console.log(`http://127.0.0.1:${PORT}`);
 });
 
-export default app
+module.exports = app;

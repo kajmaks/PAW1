@@ -2,14 +2,14 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  res.send(`
+    res.send(`
         <!DOCTYPE html>
         <html lang="pl">
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <link rel="stylesheet" href="../static/style.css">
-            <title>Strona główna</title>
+            <title>Kontakt</title>
         </head>
         <body>
             <header>
@@ -23,14 +23,18 @@ router.get('/', (req, res) => {
                 </nav>
             </header>
             <main>
-                <h1>Strona główna</h1>
-                <p>I have brought peace, freedom, justice, and security to my new Empire.</p>
-                <p>Your new Empire?</p>
-                <p>Don't make me kill you</p>
-                <p>Anakin, my allegiance is to the Republic, to democracy!</p>
-                <p>If you're not with me, then you're my enemy.</p>
-                <p> Only a Sith deals in absolutes. <br> I will do what I must.</p>
-                <p>You will try.</p>
+                <h1>Kontakt</h1>
+                <form action="/kontakt" method="POST">
+                    <label for="fname">Imię:</label><br>
+                    <input type="text" id="fname" name="fname" required><br>
+                    <label for="lname">Nazwisko:</label><br>
+                    <input type="text" id="lname" name="lname" required><br>
+                    <label for="email">Email:</label><br>
+                    <input type="email" id="email" name="email" required><br>
+                    <label for="message">Treść wiadomości:</label><br>
+                    <textarea id="message" name="message" required></textarea><br>
+                    <input type="submit" value="Wyślij">
+                </form>
             </main>
             <footer>
                 <p>Maksymilian Janicki 4c</p>
@@ -38,6 +42,11 @@ router.get('/', (req, res) => {
         </body>
         </html>
     `);
+});
+
+router.post('/', (req, res) => {
+    console.log(req.body);
+    res.redirect('/');
 });
 
 module.exports = router;

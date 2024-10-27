@@ -2,14 +2,14 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  res.send(`
+    res.send(`
         <!DOCTYPE html>
         <html lang="pl">
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <link rel="stylesheet" href="../static/style.css">
-            <title>Strona główna</title>
+            <title>Oferta</title>
         </head>
         <body>
             <header>
@@ -23,14 +23,22 @@ router.get('/', (req, res) => {
                 </nav>
             </header>
             <main>
-                <h1>Strona główna</h1>
-                <p>I have brought peace, freedom, justice, and security to my new Empire.</p>
-                <p>Your new Empire?</p>
-                <p>Don't make me kill you</p>
-                <p>Anakin, my allegiance is to the Republic, to democracy!</p>
-                <p>If you're not with me, then you're my enemy.</p>
-                <p> Only a Sith deals in absolutes. <br> I will do what I must.</p>
-                <p>You will try.</p>
+                <h1>Oferta</h1>
+                <p>Lorem ipsum dolor sit amet...</p>
+                <table>
+                    <tr>
+                        <th>Usługa</th>
+                        <th>Cena</th>
+                    </tr>
+                    <tr>
+                        <td>Strona WWW</td>
+                        <td>1000 zł</td>
+                    </tr>
+                    <tr>
+                        <td>Coś innego wymyśl sobie</td>
+                        <td>500 zł</td>
+                    </tr>
+                </table>
             </main>
             <footer>
                 <p>Maksymilian Janicki 4c</p>
