@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const db = require('../src/db'); // Import the MySQL connection
 
 router.get('/', (req, res) => {
     res.send(`
@@ -46,7 +47,17 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
     console.log(req.body);
-    res.redirect('/');
+    const { fname, lname, email, message } = req.body;
+    const fullName = `${fname} ${lname}`;
+
+    const query = 'INSERT INTO messages (name, email, message) VALUES (?, ?, ?)';
+    db.query(query, [fullName, email, message], (err) => {
+        if (err) {
+            console.error('Error:', err);
+            return res.status(500);
+        }
+        res.redirect('/');
+    });
 });
 
 module.exports = router;
