@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../src/db'); // Import the MySQL connection
+const db = require('../src/db');
 
 router.get('/', (req, res) => {
     res.send(`
