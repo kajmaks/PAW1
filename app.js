@@ -1,42 +1,15 @@
-import express from 'express';
-import fs from 'fs';
-import path from 'path';
-import mime from 'mime';
-import indexRoute from './routes/index.js';
-import jsonRoute from './routes/json.js';
-import htmlRoute from './routes/html.js';
-import { fileURLToPath } from 'url';
-import htmlfileRoute from './routes/htmlfile.js';
-import getParamsRoute from './routes/get_params.js';
+var express = require('express');
+var path = require('path');
+var cookieParser = require('cookie-parser');
+var logger = require('morgan');
 
-const app = express();
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url))
+var app = express();
 
-app.use(express.static(path.join(__dirname, 'assets')));
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRoute);
-app.use('/json', jsonRoute);
-app.use('/html', htmlRoute);
-app.use('/htmlfile', htmlfileRoute);
-app.use('/get_params', getParamsRoute);
-
-const port = process.env.PORT || 3000;
-
-console.log(`http://127.0.0.1:${port}`);
-
-app.use((req, res) => {
-  const type = mime.getType(req.url);
-  const filePath = path.join(__dirname, 'assets', req.url);
-
-  fs.readFile(filePath, (err, data) => {
-    if (err) {
-      res.status(404).json({ error: 404 });
-    } else {
-      res.setHeader('Content-Type', type);
-      res.end(data);
-    }
-  });
-});
-
-export default app
+module.exports = app;
