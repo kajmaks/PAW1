@@ -45,6 +45,7 @@ router.get('/', (req, res) => {
     `);
 });
 
+// Existing POST route for handling form submission
 router.post('/', (req, res) => {
     console.log(req.body);
     const { fname, lname, email, message } = req.body;
@@ -58,7 +59,17 @@ router.post('/', (req, res) => {
         }
         res.redirect('/');
     });
+});
+router.get('/contact-messages/:id', (req, res) => {
+    const messageId = req.params.id;
 
+    const query = 'SELECT * FROM messages WHERE id = ?';
+    db.query(query, [messageId], (err, results) => {
+        if (err) {
+            return res.status(500);
+        }
+        res.json(results[0]);
+    });
 });
 
 module.exports = router;

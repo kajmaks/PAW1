@@ -15,6 +15,7 @@ app.use('/', index);
 app.use('/o-nas', oNas);
 app.use('/oferta', oferta);
 app.use('/kontakt', kontakt);
+app.use('/api', kontakt);
 
 app.listen(PORT, () => {
     console.log(`http://127.0.0.1:${PORT}`);
