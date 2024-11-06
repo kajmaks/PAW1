@@ -45,7 +45,6 @@ router.get('/', (req, res) => {
     `);
 });
 
-// Existing POST route for handling form submission
 router.post('/', (req, res) => {
     console.log(req.body);
     const { fname, lname, email, message } = req.body;
