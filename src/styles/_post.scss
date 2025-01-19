@@ -1,0 +1,14 @@
+@use './variables';
+
+.post {
+  padding: 2rem;
+
+  h1 {
+    color: variables.$primary-color;
+  }
+
+  .content {
+    margin-top: 1rem;
+    line-height: 1.6;
+  }
+}

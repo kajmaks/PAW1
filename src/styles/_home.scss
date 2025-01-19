@@ -1,0 +1,32 @@
+@use './variables';
+
+.home {
+  padding: 2rem;
+  background-color: variables.$background-color;
+
+  h1 {
+    color: variables.$primary-color;
+  }
+
+  .post-list {
+    list-style: none;
+    padding: 0;
+
+    .post-item {
+      padding: 1rem;
+      margin-bottom: 1rem;
+      background-color: #fff;
+      border: 1px solid variables.$secondary-color; // Przestrzeń nazw
+      border-radius: 5px;
+
+      h2 {
+        margin: 0;
+        font-size: 1.5rem;
+      }
+
+      p {
+        color: variables.$secondary-color;
+      }
+    }
+  }
+}
