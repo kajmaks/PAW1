@@ -1,9 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './components/Home';
-import Post from './components/Post';
-import Categories from './components/Categories';
 import Navbar from './components/Navbar';
+import PostList from './components/PostList';
+import PostDetails from './components/PostDetails';
 import './styles/main.scss';
 
 const App = () => {
@@ -12,9 +11,8 @@ const App = () => {
       <div>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/post/:id" element={<Post />} />
-          <Route path="/categories" element={<Categories />} />
+          <Route path="/" element={<PostList />} />
+          <Route path="/post/:id" element={<PostDetails />} />
         </Routes>
       </div>
     </Router>

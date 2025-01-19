@@ -1,6 +1,6 @@
 @use './variables';
 
-.home {
+.post-list {
   padding: 2rem;
   background-color: variables.$background-color;
 
@@ -8,15 +8,15 @@
     color: variables.$primary-color;
   }
 
-  .post-list {
+  ul {
     list-style: none;
     padding: 0;
 
-    .post-item {
+    li {
       padding: 1rem;
       margin-bottom: 1rem;
       background-color: #fff;
-      border: 1px solid variables.$secondary-color; // Przestrzeń nazw
+      border: 1px solid variables.$secondary-color;
       border-radius: 5px;
 
       h2 {

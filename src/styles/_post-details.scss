@@ -1,14 +1,19 @@
 @use './variables';
 
-.post {
+.post-details {
   padding: 2rem;
 
   h1 {
     color: variables.$primary-color;
   }
 
-  .content {
+  p {
     margin-top: 1rem;
     line-height: 1.6;
+  }
+
+  h3 {
+    margin-top: 2rem;
+    color: variables.$secondary-color;
   }
 }
