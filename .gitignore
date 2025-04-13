@@ -1,0 +1,6 @@
+students.json
+subjects.json
+
+*.tmp
+__pycache__/
+*.py[cod]
